@@ -1,5 +1,6 @@
 # assigment_one
 1163095
 
-![image](https://user-images.githubusercontent.com/51300188/116427157-9ea0d300-a7f8-11eb-8db5-a6974c3043ea.png)
-![image](https://user-images.githubusercontent.com/51300188/116427173-a52f4a80-a7f8-11eb-89a4-998afbfdca7a.png)
+![image](https://user-images.githubusercontent.com/51300188/116427696-1a9b1b00-a7f9-11eb-9ea2-da37e354c603.png)
+![image](https://user-images.githubusercontent.com/51300188/116427719-1ec73880-a7f9-11eb-839a-af5d77fc04e2.png)
+
