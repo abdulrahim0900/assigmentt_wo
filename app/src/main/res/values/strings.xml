@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Abdalrahim</string>
+    <string name="RegirstrationForm">Her/His CV Form</string>
+
+    <string name="Name">Enter your name</string>
+    <string name="Mail">Enter your email</string>
+    <string name="Contact">Enter your contact number</string>
+    <string name="Pass">Enter your password</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="not_your_business">Others</string>
+    <string name="select_your_language">Select your language</string>
+    <string name="register">Login</string>
+    <string name="todo">TODO</string>
+    <string name="seconed">"     Here is your entered information:"</string>
+    <string-array name="languages">
+        <item>En</item>
+        <item>Ar</item>
+        <item>DE</item>
+    </string-array>
+</resources>

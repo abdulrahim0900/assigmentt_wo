@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+<LinearLayout android:layout_height="wrap_content"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent">
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="174dp"
+        android:background="#a86632"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_baseline_person_add_24"
+
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/RegirstrationForm"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:id="@+id/txt1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+
+                android:inputType="text"
+                android:hint="@string/Name" />
+
+            <EditText
+                android:id="@+id/txt2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Mail"
+                android:inputType="textEmailAddress"
+                android:importantForAutofill="no" />
+
+            <EditText
+                android:id="@+id/txt3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Pass"
+                android:inputType="textPassword"
+                android:importantForAutofill="no" />
+
+            <EditText
+                android:id="@+id/txt4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/Contact"
+                android:inputType="number"
+                android:importantForAutofill="no" />
+
+
+            <RelativeLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                     >
+
+
+                <RadioButton
+                    android:id="@+id/r1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/r2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female" />
+
+                <RadioButton
+                    android:id="@+id/r3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_your_business" />
+
+            </RadioGroup>
+
+
+        </RelativeLayout>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/select_your_language"
+                android:textSize="15sp"
+                android:textColor="@color/teal_700"
+                android:background="@drawable/stylish_button"
+                />
+
+            <Spinner
+                android:layout_marginTop="10dp"
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/languages"
+                android:background="@drawable/stylish_button"
+                />
+
+            <CheckBox
+                android:id="@+id/chk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remember You?"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/registerBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:background="@drawable/stylish_button"
+
+                android:onClick="registerBtn_onclick"
+                android:text="@string/register" />
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

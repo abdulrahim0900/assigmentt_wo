@@ -1,0 +1,172 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #000080; font-weight: bold;}
+.s1 { color: #000000;}
+.s2 { color: #008000; font-weight: bold;}
+.s3 { color: #0000ff;}
+.s4 { color: #808080; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span>com.example.abdalrahim;
+
+<span class="s0">import </span>androidx.appcompat.app.AppCompatActivity;
+
+<span class="s0">import </span>android.content.Intent;
+<span class="s0">import </span>android.content.SharedPreferences;
+<span class="s0">import </span>android.os.Bundle;
+<span class="s0">import </span>android.preference.PreferenceManager;
+<span class="s0">import </span>android.view.View;
+<span class="s0">import </span>android.widget.CheckBox;
+<span class="s0">import </span>android.widget.EditText;
+<span class="s0">import </span>android.widget.RadioButton;
+<span class="s0">import </span>android.widget.RadioGroup;
+<span class="s0">import </span>android.widget.Spinner;
+<span class="s0">import </span>android.widget.Toast;
+
+<span class="s0">import </span>com.example.abdalrahim.cvpackage.CV;
+
+<span class="s0">public class </span>MainActivity <span class="s0">extends </span>AppCompatActivity {
+
+
+    <span class="s0">private </span>RadioGroup rg;
+    <span class="s0">private </span>RadioButton radioButton;
+
+    <span class="s0">private </span>Spinner spinner;
+
+
+    <span class="s0">public static final </span>String NAME = <span class="s2">&quot;NAME&quot;</span>;
+    <span class="s0">public static final </span>String EMAIL = <span class="s2">&quot;EMAIL&quot;</span>;
+    <span class="s0">public static final </span>String PASS = <span class="s2">&quot;PASS&quot;</span>;
+    <span class="s0">public static final </span>String CONTACT = <span class="s2">&quot;CONTACT&quot;</span>;
+    <span class="s0">public static final </span>Integer GENDER = <span class="s3">0</span>;
+    <span class="s0">public static final </span>String LANG = <span class="s2">&quot;LANG&quot;</span>;
+    <span class="s0">public static final </span>String FLAG = <span class="s2">&quot;FLAG&quot;</span>;
+    <span class="s0">public boolean </span>flag = <span class="s0">false</span>;
+    <span class="s0">private </span>EditText edtName;
+    <span class="s0">private </span>EditText edtEmail;
+    <span class="s0">private </span>EditText edt3;
+    <span class="s0">private </span>EditText edt4;
+    <span class="s0">private </span>CheckBox chk;
+    <span class="s0">public </span>SharedPreferences prefs;
+    <span class="s0">public </span>SharedPreferences.Editor editor;
+
+
+    @Override
+    <span class="s0">protected void </span>onCreate(Bundle savedInstanceState) {
+        <span class="s0">super</span>.onCreate(savedInstanceState);
+        setupViews();
+        setupSharedPrefs();
+        checkPrefs();
+
+    }
+
+    <span class="s0">private void </span>setupViews(){
+        setContentView(R.layout.activity_main);
+        edtName = findViewById(R.id.txt1);
+        edtEmail = findViewById(R.id.txt2);
+
+        edt3 = findViewById(R.id.txt3);
+        edt4 = findViewById(R.id.txt4);
+        rg= (RadioGroup) findViewById(R.id.radioGroup);
+        spinner = findViewById(R.id.spinner);
+        chk = findViewById(R.id.chk);
+    }
+
+
+    <span class="s0">private void </span>setupSharedPrefs(){
+        prefs= PreferenceManager.getDefaultSharedPreferences(<span class="s0">this</span>);
+        editor = prefs.edit();
+    }
+
+    <span class="s0">private void </span>checkPrefs(){
+        flag = prefs.getBoolean(FLAG,<span class="s0">false</span>);
+
+        <span class="s0">if</span>(flag){
+
+            String name = prefs.getString(NAME,<span class="s2">&quot;&quot;</span>);
+            String email = prefs.getString(EMAIL,<span class="s2">&quot;&quot;</span>);
+            String pass = prefs.getString(PASS,<span class="s2">&quot;&quot;</span>);
+            String contact = prefs.getString(CONTACT,<span class="s2">&quot;&quot;</span>);
+            <span class="s0">int </span>gender = prefs.getInt(String.valueOf(GENDER),<span class="s3">1</span>);
+            String lang = prefs.getString(LANG,<span class="s2">&quot;&quot;</span>);
+
+            edtName.setText(name);
+            edtEmail.setText(email);
+            edt3.setText(pass);
+            edt4.setText(contact);
+            rg.check(gender);
+
+            spinner.setSelection(<span class="s3">1</span>);
+
+
+
+            chk.setChecked(<span class="s0">true</span>);
+        }
+    }
+
+    <span class="s0">public void </span>registerBtn_onclick(View view) {
+
+
+        Intent intent2 = <span class="s0">new </span>Intent(<span class="s0">this</span>,MainActivity2.<span class="s0">class</span>);
+
+        String name = edtName.getText().toString();
+        String password = edtEmail.getText().toString();
+        String data3 = edt3.getText().toString();
+        String data4 = edt4.getText().toString();
+
+        CV[] cvs = <span class="s0">new </span>CV[<span class="s3">1</span>];
+        cvs[<span class="s3">0</span>] = <span class="s0">new </span>CV(name, data3);
+
+        Gson gson = <span class="s0">new </span>Gson();
+        String cvsString = gson.toJson(cvs);
+
+        editor.putString(<span class="s2">&quot;cvs&quot;</span>, cvsString);
+
+
+        <span class="s0">int </span>checked = rg.getCheckedRadioButtonId();
+        radioButton = (RadioButton) findViewById(checked);
+        <span class="s0">int </span>g = radioButton.getId();
+
+        String str = spinner.getSelectedItem().toString();
+
+        <span class="s0">if</span>(chk.isChecked()){
+            <span class="s0">if</span>(!flag) {
+                editor.putString(NAME, name);
+                editor.putString(EMAIL, password);
+                editor.putString(PASS,data3);
+                editor.putString(CONTACT,data4);
+                editor.putBoolean(FLAG, <span class="s0">true</span>);
+                editor.putInt(String.valueOf(GENDER),g);
+                editor.putString(LANG,str);
+                editor.commit();
+
+            }
+
+            Toast.makeText(<span class="s0">this</span>, <span class="s2">&quot;Data Saved:</span><span class="s0">\n</span><span class="s2">&quot; </span>+ cvsString,
+                    Toast.LENGTH_SHORT).show();
+       <span class="s4">// Intent intent = new Intent(this, MainActivity2.class);</span>
+
+
+<span class="s4">//</span>
+<span class="s4">//        intent.putExtra(&quot;EDT1&quot;,data1);</span>
+<span class="s4">//        intent.putExtra(&quot;EDT2&quot;,data2);</span>
+<span class="s4">//        intent.putExtra(&quot;EDT3&quot;,data3);</span>
+<span class="s4">//        intent.putExtra(&quot;EDT4&quot;,data4);</span>
+<span class="s4">//        intent.putExtra(&quot;Gender&quot;,gender);</span>
+<span class="s4">//        intent.putExtra(&quot;spinner&quot;,str);</span>
+
+        startActivity(intent2);
+
+    }
+    } }</pre>
+</body>
+</html>
